@@ -18,6 +18,8 @@
 		FC6F0D2E27A57BCF00B8917F /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0D2D27A57BCF00B8917F /* ExampleViewController.swift */; };
 		FC6F0D3027A590F600B8917F /* AnotherCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0D2F27A590F600B8917F /* AnotherCustomView.swift */; };
 		FC6F0D3427A5A71400B8917F /* SimpleExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0D3327A5A71400B8917F /* SimpleExampleViewController.swift */; };
+		FC6F0D3627A6C5E200B8917F /* DragBasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0D3527A6C5E200B8917F /* DragBasicsViewController.swift */; };
+		FC6F0D3827A6CEE000B8917F /* NoTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0D3727A6CEE000B8917F /* NoTouchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		FC6F0D2D27A57BCF00B8917F /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		FC6F0D2F27A590F600B8917F /* AnotherCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherCustomView.swift; sourceTree = "<group>"; };
 		FC6F0D3327A5A71400B8917F /* SimpleExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleExampleViewController.swift; sourceTree = "<group>"; };
+		FC6F0D3527A6C5E200B8917F /* DragBasicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragBasicsViewController.swift; sourceTree = "<group>"; };
+		FC6F0D3727A6CEE000B8917F /* NoTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTouchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 				FC6F0D2927A57B5300B8917F /* MyCustomView.swift */,
 				FC6F0D2F27A590F600B8917F /* AnotherCustomView.swift */,
 				FC6F0D2B27A57B7D00B8917F /* DashedOutlineView.swift */,
+				FC6F0D3527A6C5E200B8917F /* DragBasicsViewController.swift */,
+				FC6F0D3727A6CEE000B8917F /* NoTouchView.swift */,
 				FC6F0D1B27A474CD00B8917F /* Main.storyboard */,
 				FC6F0D1E27A474CE00B8917F /* Assets.xcassets */,
 				FC6F0D2027A474CE00B8917F /* LaunchScreen.storyboard */,
@@ -160,7 +166,9 @@
 				FC6F0D2C27A57B7D00B8917F /* DashedOutlineView.swift in Sources */,
 				FC6F0D1627A474CD00B8917F /* AppDelegate.swift in Sources */,
 				FC6F0D1827A474CD00B8917F /* SceneDelegate.swift in Sources */,
+				FC6F0D3627A6C5E200B8917F /* DragBasicsViewController.swift in Sources */,
 				FC6F0D2E27A57BCF00B8917F /* ExampleViewController.swift in Sources */,
+				FC6F0D3827A6CEE000B8917F /* NoTouchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

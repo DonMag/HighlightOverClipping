@@ -13,6 +13,11 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 	}
 	
+	@IBAction func showBasics(_ sender: Any) {
+		let vc = DragBasicsViewController()
+		navigationController?.pushViewController(vc, animated: true)
+	}
+	
 	@IBAction func showSimpleView(_ sender: Any) {
 		let vc = SimpleExampleViewController()
 		vc.useLayerMethod = false
@@ -21,6 +26,18 @@ class ViewController: UIViewController {
 	
 	@IBAction func showSimpleLayer(_ sender: Any) {
 		let vc = SimpleExampleViewController()
+		vc.useLayerMethod = true
+		navigationController?.pushViewController(vc, animated: true)
+	}
+	
+	@IBAction func showExtendedView(_ sender: Any) {
+		let vc = ExampleViewController()
+		vc.useLayerMethod = false
+		navigationController?.pushViewController(vc, animated: true)
+	}
+	
+	@IBAction func showExtendedLayer(_ sender: Any) {
+		let vc = ExampleViewController()
 		vc.useLayerMethod = true
 		navigationController?.pushViewController(vc, animated: true)
 	}

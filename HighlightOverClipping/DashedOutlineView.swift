@@ -49,8 +49,49 @@ class DashedOutlineView: UIView {
 	}
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		shapeLayer.path = UIBezierPath(rect: bounds.insetBy(dx: -(dashLineWidth * 0.5), dy: -(dashLineWidth * 0.5))).cgPath
-		//shapeLayer.path = UIBezierPath(rect: bounds).cgPath
+		//shapeLayer.path = UIBezierPath(rect: bounds.insetBy(dx: -(dashLineWidth * 0.5), dy: -(dashLineWidth * 0.5))).cgPath
+		shapeLayer.path = UIBezierPath(rect: bounds).cgPath
 	}
+}
+
+class OutlineView: UIView {
+	public var dashColor: UIColor = .red {
+		didSet {
+			layer.borderColor = dashColor.cgColor
+		}
+	}
+	public var dashLineWidth: CGFloat = 1 {
+		didSet {
+			layer.borderWidth = dashLineWidth
+		}
+	}
+	public var dashPattern: [NSNumber]? {
+		didSet {
+			//shapeLayer.lineDashPattern = dashPattern
+		}
+	}
+	
+//	private var shapeLayer: CAShapeLayer!
+//	override class var layerClass: AnyClass {
+//		return CAShapeLayer.self
+//	}
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		commonInit()
+	}
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		commonInit()
+	}
+	private func commonInit() -> Void {
+		layer.borderColor = dashColor.cgColor
+		layer.borderWidth = dashLineWidth
+		backgroundColor = .clear
+	}
+//	override func layoutSubviews() {
+//		super.layoutSubviews()
+//		shapeLayer.path = UIBezierPath(rect: bounds.insetBy(dx: -(dashLineWidth * 0.5), dy: -(dashLineWidth * 0.5))).cgPath
+//		//shapeLayer.path = UIBezierPath(rect: bounds).cgPath
+//	}
 }
 

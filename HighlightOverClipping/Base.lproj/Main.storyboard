@@ -18,18 +18,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e4m-W8-MCn">
-                                <rect key="frame" x="49.5" y="156" width="221" height="168"/>
+                                <rect key="frame" x="49.5" y="133" width="221" height="214"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjr-Pg-ZYa">
                                         <rect key="frame" x="0.0" y="0.0" width="221" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Basics"/>
+                                        <connections>
+                                            <action selector="showBasics:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jds-5N-Pp7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5E-um-KJs">
+                                        <rect key="frame" x="0.0" y="46" width="221" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Simple Outline View Example"/>
                                         <connections>
-                                            <action selector="showSimpleView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qxh-zU-EFd"/>
+                                            <action selector="showSimpleView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CvG-tO-tyM"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JL9-5y-2vb">
-                                        <rect key="frame" x="0.0" y="46" width="221" height="30"/>
+                                        <rect key="frame" x="0.0" y="92" width="221" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Simple Outline Layer Example"/>
                                         <connections>
@@ -37,14 +45,20 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIa-wD-2nQ">
-                                        <rect key="frame" x="0.0" y="92" width="221" height="30"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Extended Outline View Example"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgS-dB-rpd">
                                         <rect key="frame" x="0.0" y="138" width="221" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Extended Outline View Example"/>
+                                        <connections>
+                                            <action selector="showExtendedView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hT6-Gr-p54"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgS-dB-rpd">
+                                        <rect key="frame" x="0.0" y="184" width="221" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Extended Outline Layer Example"/>
+                                        <connections>
+                                            <action selector="showExtendedLayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hn2-gz-igE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -61,6 +75,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="808.125" y="138.75"/>
+        </scene>
+        <!--Drag Basics View Controller-->
+        <scene sceneID="jE4-Fa-WOA">
+            <objects>
+                <viewController id="VeG-7R-arp" customClass="DragBasicsViewController" customModule="HighlightOverClipping" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cHm-Rc-1bV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0QW-7r-ehY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P8m-aE-MsM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1598" y="611"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="94a-5d-kjB">

@@ -38,11 +38,6 @@ class MyCustomView: UIView, UIGestureRecognizerDelegate {
 			outlineView.dashLineWidth = outlineWidth
 		}
 	}
-	public var outlineDashPattern: [NSNumber]? {
-		didSet {
-			outlineView.dashPattern = outlineDashPattern
-		}
-	}
 
 	// limit dragging of subviews to keep them visbile
 	//	this is the number of Points to keep inside the clipping view
@@ -75,19 +70,13 @@ class MyCustomView: UIView, UIGestureRecognizerDelegate {
 	}()
 	
 	// this will outline / highlight the selected subview
-	private let outlineView: DashedOutlineView = {
-		let v = DashedOutlineView()
+	private let outlineView: OutlineView = {
+		let v = OutlineView()
 		v.isUserInteractionEnabled = false
-		v.translatesAutoresizingMaskIntoConstraints = false
+		v.translatesAutoresizingMaskIntoConstraints = true
 		return v
 	}()
-	
-	// constraints for the outline view
-	private var outLineW: NSLayoutConstraint!
-	private var outLineH: NSLayoutConstraint!
-	private var outLineX: NSLayoutConstraint!
-	private var outLineY: NSLayoutConstraint!
-	
+
 	// used for tracking the pan movement
 	private var iCenter: CGPoint = .zero
 	private var isDragging: Bool = false
@@ -116,7 +105,6 @@ class MyCustomView: UIView, UIGestureRecognizerDelegate {
 		// outline / highlight view properties
 		outlineView.dashColor = outlineColor
 		outlineView.dashLineWidth = outlineWidth
-		outlineView.dashPattern = outlineDashPattern
 		
 		// add clipping view
 		addSubview(clippingView)
@@ -132,12 +120,6 @@ class MyCustomView: UIView, UIGestureRecognizerDelegate {
 			clippingView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0.0),
 		])
 
-		// init outline view constraints so they're not nil later
-		outLineW = outlineView.widthAnchor.constraint(equalToConstant: 0.0)
-		outLineH = outlineView.widthAnchor.constraint(equalToConstant: 0.0)
-		outLineX = outlineView.widthAnchor.constraint(equalToConstant: 0.0)
-		outLineY = outlineView.widthAnchor.constraint(equalToConstant: 0.0)
-		
 		// outline view starts hidden
 		outlineView.isHidden = true
 		
@@ -266,6 +248,7 @@ class MyCustomView: UIView, UIGestureRecognizerDelegate {
 					//	inside the allowed bezier path
 					if allowedCenterBez.contains(pt) {
 						v.center = pt
+						outlineView.center = pt
 					}
 				}
 				
@@ -275,7 +258,12 @@ class MyCustomView: UIView, UIGestureRecognizerDelegate {
 				
 				// if the subview was dragged out-of-view
 				//	we want to delete it
-				
+				allowedCenterBez = UIBezierPath(roundedRect: bounds.insetBy(dx: -(v.frame.width * 0.5 - 2), dy: -(v.frame.height * 0.5 - 2)), cornerRadius: cornerRadius)
+				if !allowedCenterBez.contains(v.center) {
+					removeSelected()
+				}
+				return()
+
 				let bez: UIBezierPath = UIBezierPath(roundedRect: clippingView.bounds, cornerRadius: cornerRadius)
 				
 				// check the 4 corners of the subview
@@ -311,23 +299,8 @@ class MyCustomView: UIView, UIGestureRecognizerDelegate {
 		
 		currentView = subView
 		
-		// deactivate current outline view constraints
-		NSLayoutConstraint.deactivate([
-			outLineW, outLineH, outLineX, outLineY,
-		])
-		
-		// constrain outline view to the newly selected subview
-		//	add outlineWidth to width and height
-		//	so the outline border doesn't overlap the subview
-		outLineW = outlineView.widthAnchor.constraint(equalTo: subView.widthAnchor, constant: 0)
-		outLineH = outlineView.heightAnchor.constraint(equalTo: subView.heightAnchor, constant: 0)
-		outLineX = outlineView.centerXAnchor.constraint(equalTo: subView.centerXAnchor, constant: 0)
-		outLineY = outlineView.centerYAnchor.constraint(equalTo: subView.centerYAnchor, constant: 0)
-		
-		// activate outline view constraints
-		NSLayoutConstraint.activate([
-			outLineW, outLineH, outLineX, outLineY,
-		])
+		outlineView.frame.size = subView.frame.size
+		outlineView.center = subView.center
 		
 		// show outline view
 		outlineView.isHidden = false
@@ -362,6 +335,14 @@ class MyCustomView: UIView, UIGestureRecognizerDelegate {
 		}
 	}
 	
+}
+
+// MARK: CGSize helper
+//	insetBy() -- similar to CGRect insetBy()
+extension CGSize {
+	func insetBy(dw: CGFloat, dh: CGFloat) -> CGSize {
+		return CGSize(width: width - dw, height: height - dh)
+	}
 }
 
 // MARK: Pan Gesture subclass

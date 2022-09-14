@@ -32,11 +32,11 @@ class ExampleViewController: UIViewController, MyCustomViewDelegate {
 		return v
 	}()
 	
-	let layerTestView: AnotherCustomView = {
-		let v = AnotherCustomView()
+	let layerTestView: NoTouchView = {
+		let v = NoTouchView()
 		// we can set some properties here
 		//v.outlineColor = .red			// default is .green
-		//v.outlineWidth = 1			// default is 2
+		//v.outlineWidth = 3			// default is 2
 		//v.outlineDashPattern = [20, 4]	// default is nil (solid border)
 		//v.cornerRadius = 24			// default is 32
 		//v.bkgColor = .black			// default is .blue
@@ -190,7 +190,7 @@ class ExampleViewController: UIViewController, MyCustomViewDelegate {
 			dSwitch.isOn = tv.allowDragToRemove
 			sSwitch.isOn = tv.shouldBringToFront
 		}
-		if let tv = testView as? AnotherCustomView {
+		if let tv = testView as? NoTouchView {
 			tv.delegate = self
 			dSwitch.isOn = tv.allowDragToRemove
 			sSwitch.isOn = tv.shouldBringToFront
@@ -203,7 +203,7 @@ class ExampleViewController: UIViewController, MyCustomViewDelegate {
 		if let tv = testView as? MyCustomView {
 			n = tv.subviewCount
 		}
-		if let tv = testView as? AnotherCustomView {
+		if let tv = testView as? NoTouchView {
 			n = tv.subviewCount
 		}
 		subviewCountLabel.text = "Subview Count: \(n)"
@@ -220,14 +220,13 @@ class ExampleViewController: UIViewController, MyCustomViewDelegate {
 			v.backgroundColor = colors[idx % colors.count]
 			v.textAlignment = .center
 			v.font = .systemFont(ofSize: 32, weight: .bold)
-			v.isUserInteractionEnabled = false
 			v.sizeToFit()
 			v.frame.size.width += 16
 			v.frame.size.height += 12
 			if let tv = testView as? MyCustomView {
 				tv.addView(v)
 			}
-			if let tv = testView as? AnotherCustomView {
+			if let tv = testView as? NoTouchView {
 				tv.addView(v)
 			}
 			idx += 1
@@ -239,7 +238,7 @@ class ExampleViewController: UIViewController, MyCustomViewDelegate {
 				if let tv = testView as? MyCustomView {
 					tv.addView(iv, atCenter: false)
 				}
-				if let tv = testView as? AnotherCustomView {
+				if let tv = testView as? NoTouchView {
 					tv.addView(iv, atCenter: false)
 				}
 			}
@@ -251,7 +250,7 @@ class ExampleViewController: UIViewController, MyCustomViewDelegate {
 		if let tv = testView as? MyCustomView {
 			tv.allowDragToRemove = sender.isOn
 		}
-		if let tv = testView as? AnotherCustomView {
+		if let tv = testView as? NoTouchView {
 			tv.allowDragToRemove = sender.isOn
 		}
 	}
@@ -259,7 +258,7 @@ class ExampleViewController: UIViewController, MyCustomViewDelegate {
 		if let tv = testView as? MyCustomView {
 			tv.shouldBringToFront = sender.isOn
 		}
-		if let tv = testView as? AnotherCustomView {
+		if let tv = testView as? NoTouchView {
 			tv.shouldBringToFront = sender.isOn
 		}
 	}
